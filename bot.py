@@ -8,7 +8,23 @@ load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
 
 llm = ChatOpenAI(openai_api_key=api_key, model="gpt-4o-mini", temperature=0.7)
-memory = Memory()
+
+config = {
+    "llm": {
+        "provider": "openai",
+        "config": {
+            "model": os.getenv('MODEL_CHOICE', 'gpt-4o-mini')
+        }
+    },
+    "vector_store": {
+        "provider": "supabase",
+        "config": {
+            "connection_string": os.environ['DATABASE_URL'],
+            "collection_name": "memories"
+        }
+    }    
+}
+memory = Memory.from_config(config)
 
 def chat_with_memory(user_message, user_id="user1"):
     memories = memory.search(query=user_message, user_id=user_id, limit=3)
@@ -39,6 +55,7 @@ Be conversational and remember what the user has told you."""),
 print("🤖 Chatbot with Memory Started!")
 print("Type 'quit' to exit")
 print("-" * 40)
+
 
 while True:
     user_input = input("\nYou: ").strip()
