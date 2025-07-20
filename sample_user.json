@@ -1,0 +1,22 @@
+{
+  "user1": {
+    "name": "Ali",
+    "preferred_location": "JBR",
+    "vehicle": "Nissan Patrol"
+  },
+  "user2": {
+    "name": "Sara",
+    "preferred_location": "Dubai Marina",
+    "vehicle": "Toyota Prado"
+  },
+  "user3": {
+    "name": "Omar",
+    "preferred_location": "Downtown",
+    "vehicle": "Ford Explorer"
+  },
+  "user4": {
+    "name": "Lina",
+    "preferred_location": "Business Bay",
+    "vehicle": "Jeep Wrangler"
+  }
+}
